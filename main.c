@@ -5,7 +5,7 @@
 ** Login   <jeanadrien.domage@epitech.eu>
 ** 
 ** Started on  Fri May 26 11:35:32 2017 Jean-Adrien Domage
-** Last update Wed May 31 17:08:36 2017 Jean-Adrien Domage
+** Last update Wed May 31 19:05:18 2017 Jean-Adrien Domage
 */
 
 #include <unistd.h>
@@ -39,6 +39,8 @@ int			main(int ac, char **av)
   if ((serv.fd = init_socket_server()) == -1)
     return (84);
   if ((bind_socket(serv.fd, serv.port, &serv)) == -1)
+    return (84);
+  if (relay_channel(&serv) == -1)
     return (84);
   if (close(serv.fd) == -1)
     return (perror("close()"), 84);
