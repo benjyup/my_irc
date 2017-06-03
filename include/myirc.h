@@ -5,7 +5,7 @@
 ** Login   <jeanadrien.domage@epitech.eu>
 ** 
 ** Started on  Fri May 26 11:36:51 2017 Jean-Adrien Domage
-** Last update Sat Jun  3 18:33:10 2017 Jean-Adrien Domage
+** Last update Sat Jun  3 19:16:17 2017 Jean-Adrien Domage
 */
 
 #ifndef MYIRC_H_
