@@ -5,7 +5,7 @@
 ## Login   <jeanadrien.domage@epitech.eu>
 ## 
 ## Started on  Fri May 26 11:30:59 2017 Jean-Adrien Domage
-## Last update Wed May 31 16:43:13 2017 Jean-Adrien Domage
+## Last update Wed May 31 21:16:12 2017 Jean-Adrien Domage
 ##
 
 SERVER	=	server
@@ -20,7 +20,11 @@ CLIENT	=	client
 
 SRC	=	main.c\
 		src/socket.c\
-		src/server.c
+		src/server.c\
+		src/select.c\
+		src/fd_set_manager.c\
+		src/connection_manager.c\
+		src/read_listener.c\
 
 OBJ	=	$(SRC:.c=.o)
 
