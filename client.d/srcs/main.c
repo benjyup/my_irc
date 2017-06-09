@@ -5,7 +5,7 @@
 ** Login   <benjamin.peixoto@epitech.eu>
 ** 
 ** Started on  Mon Jun  5 12:59:18 2017 Benjamin
-** Last update Mon Jun  5 16:27:54 2017 Benjamin
+** Last update Fri Jun  9 12:11:44 2017 Benjamin
 */
 
 #include		<stdio.h>
@@ -56,11 +56,10 @@ int			main(int ac, char **av)
   client.name = NULL;
   client.sock_info.sock = -1;
   usage();
-  if (ac == 3)
-    {
-      if (set_connection(&client, av) == EXIT_FAILURE)
-	return (EXIT_FAILURE);
-    }
+  if (ac != 3)
+    return (EXIT_FAILURE);
+  if (set_connection(&client, av) == EXIT_FAILURE)
+    return (EXIT_FAILURE);
   loop(&client);
   if (client.sock_info.sock != -1)
      close(client.sock_info.sock);

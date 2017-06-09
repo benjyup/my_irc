@@ -5,7 +5,7 @@
 ** Login   <benjamin.peixoto@epitech.eu>
 ** 
 ** Started on  Mon Jun  5 15:01:42 2017 Benjamin
-** Last update Mon Jun  5 15:24:33 2017 Benjamin
+** Last update Fri Jun  9 12:02:01 2017 Benjamin
 */
 
 #ifndef			CLIENT_H__

@@ -5,7 +5,7 @@
 ** Login   <benjamin.peixoto@epitech.eu>
 ** 
 ** Started on  Mon Jun  5 13:37:27 2017 Benjamin
-** Last update Mon Jun  5 13:37:44 2017 Benjamin
+** Last update Fri Jun  9 12:09:39 2017 Benjamin
 */
 
 #include	<unistd.h>
@@ -71,6 +71,8 @@ int		loop(t_client *client)
       if (FD_ISSET(STDIN_FILENO, &client->rfds))
 	{
 	  read_input(buffer);
+	  if (buffer[0] == '/')
+	    buffer[0] = ' ';
 	  respond(client, buffer);
 	}
       else if (FD_ISSET(client->sock_info.sock, &client->rfds))
