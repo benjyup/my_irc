@@ -5,7 +5,7 @@
 ** Login   <jeanadrien.domage@epitech.eu>
 ** 
 ** Started on  Wed May 31 16:24:03 2017 Jean-Adrien Domage
-** Last update Sat Jun  3 19:08:44 2017 Jean-Adrien Domage
+** Last update Tue Jun  6 22:21:32 2017 Jean-Adrien Domage
 */
 
 #include <stdlib.h>
@@ -22,8 +22,8 @@ static void	init_peers(t_server *serv)
       serv->peers[idx].slot = OPEN;
       serv->peers[idx].wc = 0;
       serv->peers[idx].rc = 0;
-      strcpy(serv->peers[idx].name,
-	     "Anonymous");
+      serv->peers[idx].pseudo = NULL;
+      serv->peers[idx].name = NULL;
       idx += 1;
     }
 }

@@ -5,62 +5,53 @@
 ** Login   <jeanadrien.domage@epitech.eu>
 ** 
 ** Started on  Wed May 31 20:41:35 2017 Jean-Adrien Domage
-** Last update Sat Jun  3 19:15:15 2017 Jean-Adrien Domage
+** Last update Wed Jun  7 23:39:00 2017 Jean-Adrien Domage
 */
 
 #include <string.h>
 #include <stdio.h>
 #include <unistd.h>
 #include "myirc.h"
+#include "querry_module.h"
+#include "selector.h"
 
-int	circular_write(t_peer *peer, char *s)
+int	server_parser(t_server *serv,
+		      t_peer *peer,
+		      t_querry *qry)
 {
   int	idx;
 
   idx = 0;
-  while (s[idx])
+  while (idx < ARG_NBR)
     {
-      if ((peer->wc + 1 == peer->rc - 1) ||
-	  (peer->wc == BUFF_MAX && peer->rc == 0))
-	  return (strlen(s) - idx);
-      peer->circular_buff[peer->wc] = s[idx];
-      peer->wc += 1;
-      if (peer->wc == BUFF_MAX)
-	peer->wc = 0;
+      if (strcasecmp(function_name[idx], qry->av[0]) == 0)
+	return ((function_ptr[idx])(serv, peer, qry));
       idx += 1;
     }
-  printf("Write success\n");
+  if (idx == ARG_NBR)
+    dprintf(peer->fd, "421 %s: commande unknow.\r\n", qry->av[0]);
   return (0);
 }
 
-int	server_broadcast(t_server *serv, t_peer *peer, char *s)
+int		read_listener(t_server *serv, t_peer *peer)
 {
-  int	idx;
+  t_querry	qry;
+  char		buff[512];
+  int		ret;
 
-  idx = 0;
-  printf("pass\n");
-  while (idx < MAX_PEER)
-    {
-      if (serv->peers[idx].slot == CLOSE && serv->peers[idx].fd != peer->fd)
-	{
-	  if (circular_write(&serv->peers[idx], s) != 0)
-	    printf("Circular_buff :: BIP.\n");
-	}
-      idx += 1;
-    }
-}
-
-int	read_listener(t_server *serv, t_peer *peer)
-{
-  char	buff[512];
-  int	ret;
-
-  ret = read(peer->fd, buff, 511);
+  qry.av = NULL;
+  memset(qry.buff, 0, 512);
+  ret = read(peer->fd, qry.buff, 512);
   if (ret == -1)
     return (perror("read()"), -1);
   else if (ret == 0)
     logout(serv, peer);
   else
-    server_broadcast(serv, peer, buff);
+    {
+      if (server_lexer(&qry) == 1)
+	return (-1);
+      server_parser(serv, peer, &qry);
+    }
+  free_lexer(&qry);
   return (0);
 }

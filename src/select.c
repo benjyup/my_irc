@@ -5,7 +5,7 @@
 ** Login   <jeanadrien.domage@epitech.eu>
 ** 
 ** Started on  Wed May 31 17:32:24 2017 Jean-Adrien Domage
-** Last update Wed May 31 22:16:27 2017 Jean-Adrien Domage
+** Last update Sat Jun  3 22:25:23 2017 Jean-Adrien Domage
 */
 
 #include <stdlib.h>
@@ -21,10 +21,10 @@ static void   handle_peer(t_server *serv)
     {
       if (serv->peers[idx].slot == CLOSE)
 	{
-	  /* if (FD_ISSET(serv->peers[idx].fd, &serv->writefs)) */
-	  /*   { */
-	  /*     printf("PASS\n"); */
-	  /*   } */
+	  if (FD_ISSET(serv->peers[idx].fd, &serv->writefs))
+	    {
+	      write_listener(serv, (t_peer *)&serv->peers[idx]);
+	    }
 	  if (FD_ISSET(serv->peers[idx].fd, &serv->readfs))
 	    {
 	      read_listener(serv, (t_peer *)&serv->peers[idx]);

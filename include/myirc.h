@@ -5,7 +5,7 @@
 ** Login   <jeanadrien.domage@epitech.eu>
 ** 
 ** Started on  Fri May 26 11:36:51 2017 Jean-Adrien Domage
-** Last update Sat Jun  3 19:16:17 2017 Jean-Adrien Domage
+** Last update Thu Jun  8 00:49:45 2017 Jean-Adrien Domage
 */
 
 #ifndef MYIRC_H_
@@ -18,12 +18,12 @@
 # define MAX_PEER	100
 # define MAX_CHAN	10
 
-# define BUFF_MAX	512
+# define BUFF_MAX	10
 
 typedef enum	s_peer_state
   {
     OPEN = 1,
-    CLOSE = 0
+    CLOSE = 0,
   }		t_peer_state;
 
 typedef struct		s_peer
@@ -31,7 +31,8 @@ typedef struct		s_peer
   t_peer_state		slot;
   int			fd;
   struct sockaddr_in	addr;
-  char			name[200];
+  char			*pseudo;
+  char			*name;
   char			circular_buff[BUFF_MAX + 1];
   int			rc;
   int			wc;
@@ -69,6 +70,8 @@ int	relay_channel(t_server *serv);
 int	reset_fd_set(t_server *serv);
 int	connection_manager(t_server *serv);
 int	read_listener(t_server *serv, t_peer *peer);
+int	write_listener(t_server *serv, t_peer *peer);
 int	logout(t_server *serv, t_peer *peer);
+
 
 #endif /* !MYIRC_H_ */
