@@ -5,7 +5,7 @@
 ** Login   <benjamin.peixoto@epitech.eu>
 ** 
 ** Started on  Mon Jun  5 17:49:26 2017 Benjamin
-** Last update Mon Jun  5 17:49:45 2017 Benjamin
+** Last update Fri Jun  9 12:04:55 2017 Benjamin
 */
 
 #include		<string.h>
