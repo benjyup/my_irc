@@ -5,18 +5,18 @@
 ## Login   <jeanadrien.domage@epitech.eu>
 ## 
 ## Started on  Fri May 26 11:30:59 2017 Jean-Adrien Domage
-## Last update Thu Jun  8 02:46:44 2017 Jean-Adrien Domage
+## Last update Fri Jun  9 10:50:08 2017 Jean-Adrien Domage
 ##
 
 SERVER	=	server
 
+CLIENT	=	client
+
 RM	=	rm -f
 
-CC	=	gcc -g3 -Iinclude/
+CC	=	gcc -g3 -Iinclude/ -Iclient.d/include/
 
 CFLAG	=	-w -Wextra -Wall -Werror
-
-CLIENT	=	client
 
 SRC	=	main.c\
 		src/socket.c\
@@ -36,16 +36,37 @@ SRC	=	main.c\
 
 OBJ	=	$(SRC:.c=.o)
 
-all:		$(SERVER)
+SRC_C	=	./client.d/srcs/init_my_client.c \
+		./client.d/srcs/main.c \
+		./client.d/srcs/my_communication.c \
+		./client.d/srcs/my_str_to_wordtab.c \
+		./client.d/srcs/my_usage.c \
+		./client.d/srcs/my_loop.c \
+		./client.d/srcs/my_send.c \
+		./client.d/srcs/my_channel_cmd.c \
+		./client.d/srcs/my_msg_cmd.c \
+		./client.d/srcs/my_nick_cmd.c \
+		./client.d/srcs/my_serv_cmd.c \
+		./client.d/srcs/my_user_cmd.c \
+		./client.d/srcs/useful.c
+
+OBJ_C	=	$(SRC_C:.c=.o)
+
+all:		$(SERVER) $(CLIENT)
 
 $(SERVER):	$(OBJ)
-	$(CC) $(OBJ) -o $(SERVER)
+	$(CC) $(CFLAG) $(OBJ) -o $(SERVER)
+
+$(CLIENT):	$(OBJ_C)
+	$(CC) $(CFLAG) $(OBJ_C) -o $(CLIENT)
 
 clean:
 	$(RM) $(OBJ)
+	$(RM) $(OBJ_C)
 
 fclean:	clean
 	$(RM) $(SERVER)
+	$(RM) $(CLIENT)
 
 re:	fclean all
 
