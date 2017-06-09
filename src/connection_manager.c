@@ -5,7 +5,7 @@
 ** Login   <jeanadrien.domage@epitech.eu>
 ** 
 ** Started on  Wed May 31 15:52:38 2017 Jean-Adrien Domage
-** Last update Thu Jun  8 00:54:56 2017 Jean-Adrien Domage
+** Last update Fri Jun  9 11:42:03 2017 Jean-Adrien Domage
 */
 
 #include <unistd.h>
@@ -63,6 +63,5 @@ int			connection_manager(t_server *serv)
   slot->fd = client_fd;
   slot->addr = client_addr;
   slot->slot = CLOSE;
-  dprintf(slot->fd, "Wellcome to the internet relay network\r\n");
   return (0);
 }

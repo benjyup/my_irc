@@ -5,7 +5,7 @@
 ** Login   <jeanadrien.domage@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 21:45:11 2017 Jean-Adrien Domage
-** Last update Fri Jun  9 10:34:33 2017 Jean-Adrien Domage
+** Last update Fri Jun  9 14:24:45 2017 Jean-Adrien Domage
 */
 
 #include <stdlib.h>
@@ -19,12 +19,6 @@ static int	register_user(t_server *serv, t_peer *peer, char *pseudo)
   int		idx;
 
   idx = 0;
-  if (serv->peers[idx].pseudo)
-    if (strcmp(peer->pseudo, pseudo) == 0)
-      {
-	dprintf(peer->fd, "433 %s: already in use.\r\n", pseudo);
-	return (1);
-      }
   while (idx < MAX_PEER)
     {
       if (serv->peers[idx].slot == CLOSE)
@@ -53,8 +47,9 @@ int	function_nick(t_server *serv, t_peer *peer, t_querry *qry)
       dprintf(peer->fd, "432 %s: already exist.\r\n", qry->av[1]);
       return (1);
     }
-  if (register_user(serv, peer, qry->av[1]) == 1)
-    return (1);;
+  if (qry->av[1])
+    if (register_user(serv, peer, qry->av[1]) == 1)
+      return (1);
   dprintf(peer->fd, "001 %s: registered.\r\n", peer->pseudo);
   return (0);
 }

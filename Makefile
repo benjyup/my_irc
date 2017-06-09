@@ -5,7 +5,7 @@
 ## Login   <jeanadrien.domage@epitech.eu>
 ## 
 ## Started on  Fri May 26 11:30:59 2017 Jean-Adrien Domage
-## Last update Fri Jun  9 10:50:08 2017 Jean-Adrien Domage
+## Last update Fri Jun  9 12:58:08 2017 Jean-Adrien Domage
 ##
 
 SERVER	=	server
@@ -30,9 +30,7 @@ SRC	=	main.c\
 		src/function_join.c\
 		src/function_user.c\
 		src/function_quit.c\
-		src/function_nick.c\
-		src/function_mode.c\
-		src/function_whois.c
+		src/function_nick.c
 
 OBJ	=	$(SRC:.c=.o)
 

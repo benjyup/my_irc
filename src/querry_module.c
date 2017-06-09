@@ -5,7 +5,7 @@
 ** Login   <jeanadrien.domage@epitech.eu>
 ** 
 ** Started on  Mon Jun  5 05:32:06 2017 Jean-Adrien Domage
-** Last update Thu Jun  8 00:08:13 2017 Jean-Adrien Domage
+** Last update Fri Jun  9 13:53:44 2017 Jean-Adrien Domage
 */
 
 #include <unistd.h>
@@ -57,6 +57,7 @@ static void	reset_space_bel(t_querry *this)
 {
   int		idx;
 
+  idx = 0;
   while (this->av[this->size - 1][idx] != '\0')
     {
       if (this->av[this->size - 1][idx] == '\a')
