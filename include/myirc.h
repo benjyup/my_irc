@@ -5,7 +5,7 @@
 ** Login   <jeanadrien.domage@epitech.eu>
 ** 
 ** Started on  Fri May 26 11:36:51 2017 Jean-Adrien Domage
-** Last update Thu Jun  8 00:49:45 2017 Jean-Adrien Domage
+** Last update Sat Jun 10 17:09:19 2017 Jean-Adrien Domage
 */
 
 #ifndef MYIRC_H_
@@ -33,6 +33,8 @@ typedef struct		s_peer
   struct sockaddr_in	addr;
   char			*pseudo;
   char			*name;
+  char			*username;
+  char			*old;
   char			circular_buff[BUFF_MAX + 1];
   int			rc;
   int			wc;
@@ -46,7 +48,7 @@ typedef enum	s_chan_state
 
 typedef struct	s_channel
 {
-  char		name[200];
+  char		*name;
   t_chan_state	state;
   t_peer	*peers[10];
   int		peers_nb;
@@ -72,6 +74,6 @@ int	connection_manager(t_server *serv);
 int	read_listener(t_server *serv, t_peer *peer);
 int	write_listener(t_server *serv, t_peer *peer);
 int	logout(t_server *serv, t_peer *peer);
-
+int	find_chan(t_server *serv, char *s);
 
 #endif /* !MYIRC_H_ */

@@ -5,7 +5,7 @@
 ** Login   <jeanadrien.domage@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 21:45:11 2017 Jean-Adrien Domage
-** Last update Fri Jun  9 14:24:45 2017 Jean-Adrien Domage
+** Last update Sat Jun 10 17:15:06 2017 Jean-Adrien Domage
 */
 
 #include <stdlib.h>
@@ -33,13 +33,15 @@ static int	register_user(t_server *serv, t_peer *peer, char *pseudo)
 	}
       idx += 1;
     }
+  if (peer->old)
+    free(peer->old);
+  peer->old = peer->pseudo;
   peer->pseudo = strdup(pseudo);
   return (0);
 }
 
 int	function_nick(t_server *serv, t_peer *peer, t_querry *qry)
 {
-
   if (qry->size < 2)
     return (dprintf(peer->fd, "461 USER: Need more params.\r\n"), 1);
   if (strcmp(qry->av[1], "anonymous") == 0)
@@ -50,6 +52,10 @@ int	function_nick(t_server *serv, t_peer *peer, t_querry *qry)
   if (qry->av[1])
     if (register_user(serv, peer, qry->av[1]) == 1)
       return (1);
-  dprintf(peer->fd, "001 %s: registered.\r\n", peer->pseudo);
+  if (peer->old)
+    dprintf(peer->fd, ":%s NICK %s\r\n", peer->old, peer->pseudo);
+  else
+    dprintf(peer->fd, ": NICK %s\r\n", peer->pseudo);
+  dprintf(peer->fd, "001\r\n");
   return (0);
 }

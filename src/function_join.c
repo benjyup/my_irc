@@ -5,7 +5,7 @@
 ** Login   <jeanadrien.domage@epitech.eu>
 ** 
 ** Started on  Mon Jun  5 02:29:14 2017 Jean-Adrien Domage
-** Last update Fri Jun  9 10:08:52 2017 Jean-Adrien Domage
+** Last update Sat Jun 10 17:15:20 2017 Jean-Adrien Domage
 */
 
 #include <string.h>
@@ -13,15 +13,35 @@
 #include "myirc.h"
 #include "querry_module.h"
 
-static	int	find_chan(t_server *serv, char *s)
+int	find_chan(t_server *serv, char *s)
 {
   int		idx;
 
   idx = 0;
   while (idx < MAX_CHAN)
     {
-      if (strcmp(serv->chan[idx].name, s) == 0)
-	return (idx);
+      if (serv->chan[idx].name)
+	if (strcmp(serv->chan[idx].name, s) == 0)
+	  return (idx);
+      idx += 1;
+    }
+  return (-1);
+}
+
+static int	get_new_chan(t_server *serv, char *s)
+{
+  int		idx;
+
+  idx = 0;
+  while (idx < MAX_CHAN)
+    {
+      if (serv->chan[idx].state == DOWN)
+	{
+	  serv->chan[idx].name = strdup(s);
+	  serv->chan[idx].state = READY;
+	  serv->chan[idx].peers_nb = 0;
+	  return (idx);
+	}
       idx += 1;
     }
   return (-1);
@@ -31,10 +51,26 @@ static int	add_to_chan(t_server	*serv,
 			    t_peer	*peer,
 			    char	*s)
 {
-  /* if (find_chan() = -1) */
-  /*   { */
-      
-  /*   } */
+  int		idx;
+  int		jdx;
+
+  jdx = 0;
+  if ((idx = find_chan(serv, s)) == -1)
+    {
+      idx = get_new_chan(serv, s);
+    }
+  while (jdx < 10)
+    {
+      if (serv->chan[idx].peers[jdx] == NULL)
+	{
+	  serv->chan[idx].peers[jdx] = peer;
+	  dprintf(peer->fd, ":%s JOIN %s\r\n", peer->pseudo, s);
+	  dprintf(peer->fd, "332\r\n");
+	  return (0);
+	}
+      jdx += 1;
+    }
+  return (1);
 }
 
 int	function_join(t_server *serv,

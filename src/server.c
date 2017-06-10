@@ -5,7 +5,7 @@
 ** Login   <jeanadrien.domage@epitech.eu>
 ** 
 ** Started on  Wed May 31 16:24:03 2017 Jean-Adrien Domage
-** Last update Tue Jun  6 22:21:32 2017 Jean-Adrien Domage
+** Last update Fri Jun  9 15:28:00 2017 Jean-Adrien Domage
 */
 
 #include <stdlib.h>
@@ -44,8 +44,7 @@ static void	init_chan(t_server *serv)
 	  serv->chan[idx].peers[peer_idx] = NULL;
 	  peer_idx += 1;
 	}
-      serv->chan[idx].name[0] = idx + '0';
-      serv->chan[idx].name[1] = '\0';
+      serv->chan[idx].name = NULL;
       idx += 1;
     }
 }
