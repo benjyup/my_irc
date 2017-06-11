@@ -5,7 +5,7 @@
 ** Login   <jeanadrien.domage@epitech.eu>
 ** 
 ** Started on  Mon Jun  5 02:29:14 2017 Jean-Adrien Domage
-** Last update Sun Jun 11 16:30:46 2017 Benjamin
+** Last update Sun Jun 11 17:46:39 2017 Jean-Adrien Domage
 */
 
 #include <string.h>
@@ -28,7 +28,6 @@ int	find_chan(t_server *serv, char *s)
   return (-1);
 }
 
-
 int	list_channels(t_server *server,
 		      t_peer *peer,
 		      const char *name)
@@ -36,13 +35,13 @@ int	list_channels(t_server *server,
   int		idx;
 
   idx = 0;
-  dprintf(peer->fd, "322\r\n");
   while (idx < MAX_CHAN)
     {
       if (server->chan[idx].state == READY)
 	dprintf(peer->fd, "%s\r\n", server->chan[idx].name);
       idx++;
     }
+  dprintf(peer->fd, "322\r\n");
   return (0);
 }
 

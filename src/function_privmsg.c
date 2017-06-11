@@ -5,7 +5,7 @@
 ** Login   <jeanadrien.domage@epitech.eu>
 ** 
 ** Started on  Sat Jun 10 17:58:52 2017 Jean-Adrien Domage
-** Last update Sun Jun 11 17:37:59 2017 Jean-Adrien Domage
+** Last update Sun Jun 11 18:11:19 2017 Jean-Adrien Domage
 */
 
 #include <string.h>
@@ -65,15 +65,22 @@ int     function_privmsg(t_server *serv,
 			 t_querry *qry)
 {
   if (qry-> size < 3)
-    return (dprintf(peer->fd, "461 PRIVMSG: to few paramater\r\n"), 1);
+    return (dprintf(peer->fd, "412 PRIVMSG: no text to send\r\n"), 1);
   if (qry->av[1][0] == '#' ||
       qry->av[1][0] == '&')
     {
       if (print_to_chan(serv, peer, qry->av[1], qry->av[2]) == 1)
-        return (1);
+        {
+	  dprintf(peer->fd, "404 PRIVMSG: Cannot send to channel.\r\n");
+	  return (1);
+	}
       return (0);
     }
   else
-    print_to_peer(serv, peer, qry->av[1], qry->av[2]);  
+    if (print_to_peer(serv, peer, qry->av[1], qry->av[2]) == 1)
+      {
+	dprintf(peer->fd, "401 PRIVMSG: No such nick\r\n");
+	return (1);
+      }
   return (0);
 }

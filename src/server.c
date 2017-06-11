@@ -5,12 +5,37 @@
 ** Login   <jeanadrien.domage@epitech.eu>
 ** 
 ** Started on  Wed May 31 16:24:03 2017 Jean-Adrien Domage
-** Last update Fri Jun  9 15:28:00 2017 Jean-Adrien Domage
+** Last update Sun Jun 11 18:28:42 2017 Jean-Adrien Domage
 */
 
+#include <unistd.h>
+#include <stdio.h>
+#include <signal.h>
 #include <stdlib.h>
 #include <string.h>
 #include "myirc.h"
+
+static t_server	*g_serv = NULL;
+
+void	sig_handler(int sig)
+{
+  int	i;
+
+  i = 0;
+  printf("SIGINT received\n");
+  if (g_serv == NULL)
+    exit(0);
+  while (i < MAX_PEER)
+    {
+      if (g_serv->peers[i].slot == CLOSE)
+	{
+	  dprintf(g_serv->peers[i].fd, "Connection close by server.\r\n");
+	  close(g_serv->peers[i].fd);
+	}
+      i += 1;
+    }
+  exit(0);
+}
 
 static void	init_peers(t_server *serv)
 {
@@ -53,4 +78,6 @@ void	init_server(t_server *serv)
 {
   init_peers(serv);
   init_chan(serv);
+  g_serv = serv;
+  signal(SIGINT, sig_handler);
 }
