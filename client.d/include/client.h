@@ -5,7 +5,7 @@
 ** Login   <benjamin.peixoto@epitech.eu>
 ** 
 ** Started on  Mon Jun  5 15:01:42 2017 Benjamin
-** Last update Sun Jun 11 21:34:51 2017 Benjamin
+** Last update Sun Jun 11 22:09:39 2017 Benjamin
 */
 
 #ifndef			CLIENT_H_
@@ -30,7 +30,7 @@
 # define		ERR_CONNECT	"error with connect()"
 
 # define		PROTOCOL	"TCP"
-# define		NB_CLIENT_CMDS	(10)
+# define		NB_CLIENT_CMDS	(8)
 
 # define		BUFFER_SIZE	(1024)
 # define		PROMPT		"[my_irc]$ "
