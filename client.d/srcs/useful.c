@@ -5,7 +5,7 @@
 ** Login   <naina_r@epitech.net>
 ** 
 ** Started on  Wed Apr 24 15:20:23 2013 richard naina
-** Last update Wed Apr 24 15:22:55 2013 richard naina
+** Last update Sun Jun 11 18:51:12 2017 Benjamin
 */
 
 #include		<stdlib.h>
@@ -15,7 +15,7 @@ int			tablen(char **tab)
   int			i;
 
   i = 0;
-  while (tab[i] != NULL)
+  while (tab[i])
     ++i;
   return (i);
 }

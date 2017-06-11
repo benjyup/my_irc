@@ -5,7 +5,7 @@
 ## Login   <jeanadrien.domage@epitech.eu>
 ## 
 ## Started on  Fri May 26 11:30:59 2017 Jean-Adrien Domage
-## Last update Sat Jun 10 18:34:49 2017 Jean-Adrien Domage
+## Last update Sun Jun 11 18:53:04 2017 Benjamin
 ##
 
 SERVER	=	server
@@ -39,7 +39,7 @@ OBJ	=	$(SRC:.c=.o)
 SRC_C	=	./client.d/srcs/init_my_client.c \
 		./client.d/srcs/main.c \
 		./client.d/srcs/my_communication.c \
-		./client.d/srcs/my_str_to_wordtab.c \
+		./client.d/srcs/my_str_to_word_tab.c \
 		./client.d/srcs/my_usage.c \
 		./client.d/srcs/my_loop.c \
 		./client.d/srcs/my_send.c \
