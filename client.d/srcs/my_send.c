@@ -5,32 +5,24 @@
 ** Login   <benjamin.peixoto@epitech.eu>
 ** 
 ** Started on  Mon Jun  5 13:38:49 2017 Benjamin
-** Last update Fri Jun  9 12:01:43 2017 Benjamin
+** Last update Sun Jun 11 18:57:47 2017 Benjamin
 */
 
 #include		<string.h>
 #include		<stdio.h>
 #include		"client.h"
 
-static int		debug()
-{
-  puts(NOT_IMPLEMENTED);
-  return (R_SUCCESS);
-}
-
 static t_commands	g_cmd[NB_CLIENT_CMDS] =
-{
-  {"/server", &server},
-  {"/nick", &nickname},
-  {"/list", &channel},
-  {"/join", &channel},
-  {"/part", &channel},
-  {"/users", &users},
-  {"/msg", &message},
-  {"/send_file", &debug},
-  {"/accept_file", &debug},
-  {"/help", &usage}
-};
+    {
+      {"/server", &server},
+      {"/nick", &nickname},
+      {"/list", &channel},
+      {"/join", &channel},
+      {"/part", &channel},
+      {"/users", &users},
+      {"/msg", &message},
+      {"/help", &usage}
+    };
 
 static int		is_cmd(const char *cmd)
 {
@@ -51,7 +43,7 @@ int			respond(t_client *client,
 {
   char			**tab;
   int			ret;
-
+  
   tab = my_str_to_wordtab(buffer, " :");
   if ((ret = is_cmd(buffer)) != R_FAILURE)
     {
