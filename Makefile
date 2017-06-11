@@ -5,7 +5,7 @@
 ## Login   <jeanadrien.domage@epitech.eu>
 ## 
 ## Started on  Fri May 26 11:30:59 2017 Jean-Adrien Domage
-## Last update Sun Jun 11 18:53:04 2017 Benjamin
+## Last update Sun Jun 11 21:39:56 2017 Benjamin
 ##
 
 SERVER	=	server
@@ -14,7 +14,7 @@ CLIENT	=	client
 
 RM	=	rm -f
 
-CC	=	gcc -g3 -Iinclude/ -Iclient.d/include/
+CC	=	gcc -Iinclude/ -Iclient.d/include/
 
 CFLAG	=	-w -Wextra -Wall -Werror
 
@@ -47,9 +47,7 @@ SRC_C	=	./client.d/srcs/init_my_client.c \
 		./client.d/srcs/my_msg_cmd.c \
 		./client.d/srcs/my_nick_cmd.c \
 		./client.d/srcs/my_serv_cmd.c \
-		./client.d/srcs/my_user_cmd.c \
-		./client.d/srcs/useful.c
-
+		./client.d/srcs/my_user_cmd.c
 OBJ_C	=	$(SRC_C:.c=.o)
 
 all:		$(SERVER) $(CLIENT)
