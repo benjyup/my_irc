@@ -5,7 +5,7 @@
 ** Login   <jeanadrien.domage@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 21:45:11 2017 Jean-Adrien Domage
-** Last update Sun Jun 11 17:12:24 2017 Jean-Adrien Domage
+** Last update Sun Jun 11 18:34:01 2017 Jean-Adrien Domage
 */
 
 #include <stdio.h>
@@ -29,6 +29,12 @@ int	function_user(t_server *serv, t_peer *peer, t_querry *qry)
       return (dprintf(peer->fd, "462 :You are already registered.\r\n"), 1);
     }
   register_user(peer, qry->av[1], qry->av[4]);
-  dprintf(peer->fd, ":%s USER %s %s %s %s\r\n", peer->pseudo, qry->av[1], qry->av[2], qry->av[3], qry->av[4]);
+  dprintf(peer->fd,
+	  ":%s USER %s %s %s %s\r\n",
+	  peer->pseudo,
+	  qry->av[1],
+	  qry->av[2],
+	  qry->av[3],
+	  qry->av[4]);
   return (0);
 }

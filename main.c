@@ -5,7 +5,7 @@
 ** Login   <jeanadrien.domage@epitech.eu>
 ** 
 ** Started on  Fri May 26 11:35:32 2017 Jean-Adrien Domage
-** Last update Wed May 31 19:05:18 2017 Jean-Adrien Domage
+** Last update Sun Jun 11 18:30:42 2017 Jean-Adrien Domage
 */
 
 #include <unistd.h>
@@ -22,7 +22,7 @@ int	argument_controler(int ac, char **av)
   if (ac != 2)
     return (printf(USAGE, av[0]), 1);
   if (strcmp(av[1], "--help") == 0)
-    return (printf(USAGE, av[0]), 1);    
+    return (printf(USAGE, av[0]), 1);
   port = strtol(av[1], &err, 10);
   if (err[0] != '\0')
     return (printf("PARSER: Invalide port.\n"), 1);
@@ -32,7 +32,7 @@ int	argument_controler(int ac, char **av)
 int			main(int ac, char **av)
 {
   t_server		serv;
-  
+
   init_server(&serv);
   if ((serv.port = argument_controler(ac, av)) == 1)
     return (84);

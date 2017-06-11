@@ -1,13 +1,11 @@
 /*
 ** socket.c for myirc in /home/jeanadrien/rendu/PROJECT/PSU_2016_myirc/src
-  if (bind(fd,
-           (const struct sockaddr *)&addr,
-           sizeof(*addr)) == -1)** 
+**
 ** Made by Jean-Adrien Domage
 ** Login   <jeanadrien.domage@epitech.eu>
 ** 
 ** Started on  Fri May 26 11:39:01 2017 Jean-Adrien Domage
-** Last update Wed May 31 17:12:07 2017 Jean-Adrien Domage
+** Last update Sun Jun 11 18:36:05 2017 Jean-Adrien Domage
 */
 
 #include <sys/socket.h>

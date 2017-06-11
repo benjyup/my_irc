@@ -5,7 +5,7 @@
 ** Login   <benjamin.peixoto@epitech.eu>
 ** 
 ** Started on  Mon Jun  5 15:01:42 2017 Benjamin
-** Last update Fri Jun  9 12:02:01 2017 Benjamin
+** Last update Sun Jun 11 18:37:02 2017 Jean-Adrien Domage
 */
 
 #ifndef			CLIENT_H__
@@ -46,7 +46,6 @@ implemented yet."
 closed"
 # define		SUCCESS_CMD_MSG	"has been successfully executed."
 # define		FAILURE_CMD_MSG	"has failed to execute."
-
 
 typedef struct		s_sock_info
 {

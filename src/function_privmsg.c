@@ -5,7 +5,7 @@
 ** Login   <jeanadrien.domage@epitech.eu>
 ** 
 ** Started on  Sat Jun 10 17:58:52 2017 Jean-Adrien Domage
-** Last update Sun Jun 11 18:11:19 2017 Jean-Adrien Domage
+** Last update Sun Jun 11 18:35:26 2017 Jean-Adrien Domage
 */
 
 #include <string.h>
@@ -28,9 +28,13 @@ int	print_to_chan(t_server *serv,
     {
       while (jdx < 10)
 	{
-	  if (serv->chan[idx].peers[jdx] != NULL && serv->chan[idx].peers[jdx]->fd != peer->fd)
+	  if (serv->chan[idx].peers[jdx] != NULL &&
+	      serv->chan[idx].peers[jdx]->fd != peer->fd)
 	    {
-	      dprintf(serv->chan[idx].peers[jdx]->fd, ":%s PRIVMSG %s %s\r\n", peer->pseudo, target, msg);
+	      dprintf(serv->chan[idx].peers[jdx]->fd,
+		      ":%s PRIVMSG %s %s\r\n",
+		      peer->pseudo,
+		      target, msg);
 	      return (0);
 	    }
 	  jdx += 1;
@@ -52,7 +56,10 @@ int	print_to_peer(t_server *serv,
       if (serv->peers[idx].pseudo)
 	if (strcasecmp(serv->peers[idx].pseudo, target) == 0)
 	{
-	  dprintf(serv->peers[idx].fd, ":%s PRIVMSG %s %s\r\n", peer->pseudo, target, msg);
+	  dprintf(serv->peers[idx].fd,
+		  ":%s PRIVMSG %s %s\r\n",
+		  peer->pseudo,
+		  target, msg);
 	  return (0);
 	}
       idx += 1;

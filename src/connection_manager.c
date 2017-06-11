@@ -5,7 +5,7 @@
 ** Login   <jeanadrien.domage@epitech.eu>
 ** 
 ** Started on  Wed May 31 15:52:38 2017 Jean-Adrien Domage
-** Last update Fri Jun  9 11:42:03 2017 Jean-Adrien Domage
+** Last update Sun Jun 11 18:36:20 2017 Jean-Adrien Domage
 */
 
 #include <unistd.h>
@@ -47,7 +47,7 @@ int			connection_manager(t_server *serv)
   struct sockaddr_in    client_addr;
   socklen_t             client_size;
   t_peer		*slot;
-  
+
   client_size = sizeof(client_addr);
   if ((client_fd = accept(serv->fd,
 			  (struct sockaddr *)&client_addr,

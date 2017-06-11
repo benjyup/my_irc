@@ -5,7 +5,7 @@
 ** Login   <jeanadrien.domage@epitech.eu>
 ** 
 ** Started on  Sat Jun 10 16:56:36 2017 Jean-Adrien Domage
-** Last update Sat Jun 10 17:13:03 2017 Jean-Adrien Domage
+** Last update Sun Jun 11 18:33:15 2017 Jean-Adrien Domage
 */
 
 #include <stdlib.h>
@@ -40,7 +40,6 @@ static int      remove_to_chan(t_server    *serv,
   return (1);
 }
 
-
 int     function_part(t_server *serv,
                       t_peer *peer,
                       t_querry *qry)
@@ -55,8 +54,9 @@ int     function_part(t_server *serv,
       return (0);
     }
   else
-    return (dprintf(peer->fd, "475 %s: The given channel mask was invalid\r\n", qry->a\
-v[1]), 1);
+    return (dprintf(peer->fd,
+		    "475 %s: The given channel mask was invalid\r\n",
+		    qry->av[1]), 1);
   return (0);
 }
 

@@ -5,7 +5,7 @@
 ** Login   <jeanadrien.domage@epitech.eu>
 ** 
 ** Started on  Mon Jun  5 02:29:14 2017 Jean-Adrien Domage
-** Last update Sun Jun 11 17:46:39 2017 Jean-Adrien Domage
+** Last update Sun Jun 11 18:32:07 2017 Jean-Adrien Domage
 */
 
 #include <string.h>
@@ -104,6 +104,8 @@ int	function_join(t_server *serv,
       return (0);
     }
   else
-    return (dprintf(peer->fd, "475 %s: The given channel mask was invalid\r\n", qry->av[1]), 1);
+    return (dprintf(peer->fd,
+		    "475 %s: The given channel mask was invalid\r\n",
+		    qry->av[1]), 1);
   return (0);
 }

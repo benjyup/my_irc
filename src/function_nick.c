@@ -5,7 +5,7 @@
 ** Login   <jeanadrien.domage@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 21:45:11 2017 Jean-Adrien Domage
-** Last update Sun Jun 11 17:14:14 2017 Jean-Adrien Domage
+** Last update Sun Jun 11 18:32:34 2017 Jean-Adrien Domage
 */
 
 #include <stdlib.h>
@@ -29,7 +29,7 @@ static int	register_user(t_server *serv, t_peer *peer, char *pseudo)
 		pseudo = strdup(pseudo);
 		pseudo = realloc(pseudo, strlen(pseudo) + 1);
 		pseudo = strcat(pseudo, "_");
-	      }	
+	      }
 	}
       idx += 1;
     }

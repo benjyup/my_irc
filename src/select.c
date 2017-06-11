@@ -5,7 +5,7 @@
 ** Login   <jeanadrien.domage@epitech.eu>
 ** 
 ** Started on  Wed May 31 17:32:24 2017 Jean-Adrien Domage
-** Last update Sat Jun  3 22:25:23 2017 Jean-Adrien Domage
+** Last update Sun Jun 11 18:35:41 2017 Jean-Adrien Domage
 */
 
 #include <stdlib.h>
@@ -33,7 +33,6 @@ static void   handle_peer(t_server *serv)
       idx += 1;
     }
 }
-
 
 int	relay_channel(t_server *serv)
 {

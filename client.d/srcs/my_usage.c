@@ -5,7 +5,7 @@
 ** Login   <benjamin.peixoto@epitech.eu>
 ** 
 ** Started on  Mon Jun  5 12:58:59 2017 Benjamin
-** Last update Mon Jun  5 13:09:50 2017 Benjamin
+** Last update Sun Jun 11 18:38:24 2017 Jean-Adrien Domage
 */
 
 #include	<stdio.h>
@@ -18,7 +18,8 @@ int		usage()
   puts("/server _host_[ :_port_] to connect to server.");
   puts("/nick _nickname_ : defines the bickname of the user in the channel.");
   puts("/list [string] : list the channels available on the server.\
-Displays only the channels containing the string 'string' if it is specified.");
+Displays only the channels containing the string 'string' if\
+ it is specified.");
   puts("/join _channel_ : joins a channel on server.");
   puts("/part _channel_ : leave the channel.");
   puts("/users : display the users connected to the channel \

@@ -5,7 +5,7 @@
 ** Login   <tran_w@epitech.net>
 ** 
 ** Started on  Sun Apr 14 22:27:21 2013 tran_w
-** Last update Mon Jun  5 16:38:50 2017 Benjamin
+** Last update Sun Jun 11 18:37:44 2017 Jean-Adrien Domage
 */
 
 #include		<stdlib.h>
@@ -70,7 +70,7 @@ char			**my_str_to_wordtab(const char *str, char *sep)
   int			i;
   int			j;
   int			save;
-  
+
   if ((res = malloc((count_words(str, sep) + 1) * sizeof(*res))) == NULL)
     return (NULL);
   j = 0;
