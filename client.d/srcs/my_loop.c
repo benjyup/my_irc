@@ -5,7 +5,7 @@
 ** Login   <benjamin.peixoto@epitech.eu>
 ** 
 ** Started on  Mon Jun  5 13:37:27 2017 Benjamin
-** Last update Fri Jun  9 12:09:39 2017 Benjamin
+** Last update Sun Jun 11 21:52:44 2017 Benjamin
 */
 
 #include	<unistd.h>
@@ -19,7 +19,7 @@ static int	read_server(const int sock, char *buffer)
   if ((my_recv(sock, buffer, BUFFER_SIZE)) == 0 ||
     !strcmp(DISCO_MSG, buffer))
       {
-	puts(KICKED_MSG);
+	printf(KICKED_MSG);
 	return (R_SUCCESS);
       }
   return (R_FAILURE);
@@ -79,7 +79,7 @@ int		loop(t_client *client)
 	{
 	  if (read_server(client->sock_info.sock, buffer) == R_SUCCESS)
 	    return (R_SUCCESS);
-	  puts(buffer);
+	  printf("%s", buffer);
 	}
     }
   return (R_SUCCESS);
