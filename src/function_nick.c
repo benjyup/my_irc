@@ -5,7 +5,7 @@
 ** Login   <jeanadrien.domage@epitech.eu>
 ** 
 ** Started on  Tue Jun  6 21:45:11 2017 Jean-Adrien Domage
-** Last update Sat Jun 10 17:15:06 2017 Jean-Adrien Domage
+** Last update Sun Jun 11 17:14:14 2017 Jean-Adrien Domage
 */
 
 #include <stdlib.h>
@@ -53,9 +53,11 @@ int	function_nick(t_server *serv, t_peer *peer, t_querry *qry)
     if (register_user(serv, peer, qry->av[1]) == 1)
       return (1);
   if (peer->old)
-    dprintf(peer->fd, ":%s NICK %s\r\n", peer->old, peer->pseudo);
+      dprintf(peer->fd, ":%s NICK %s\r\n", peer->old, peer->pseudo);
   else
-    dprintf(peer->fd, ": NICK %s\r\n", peer->pseudo);
-  dprintf(peer->fd, "001\r\n");
+    {
+      dprintf(peer->fd, ": NICK %s\r\n", peer->pseudo);
+      dprintf(peer->fd, "001\r\n");
+    }
   return (0);
 }
