@@ -5,7 +5,7 @@
 ** Login   <benjamin.peixoto@epitech.eu>
 ** 
 ** Started on  Mon Jun  5 13:37:27 2017 Benjamin
-** Last update Sun Jun 11 21:52:44 2017 Benjamin
+** Last update Sun Jun 11 22:01:01 2017 Benjamin
 */
 
 #include	<unistd.h>
@@ -42,11 +42,11 @@ static int	do_select(t_client *client)
 {
   int		max_fd;
 
-  FD_ZERO(&client->rfds);
   FD_ZERO(&client->wfds);
+  FD_ZERO(&client->rfds);
   FD_SET(STDIN_FILENO, &client->rfds);
-  FD_SET(client->sock_info.sock, &client->rfds);
   FD_SET(client->sock_info.sock, &client->wfds);
+  FD_SET(client->sock_info.sock, &client->rfds);
   if (client->sock_info.sock == -1)
     max_fd = STDERR_FILENO;
   else
