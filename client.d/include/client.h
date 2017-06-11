@@ -5,11 +5,11 @@
 ** Login   <benjamin.peixoto@epitech.eu>
 ** 
 ** Started on  Mon Jun  5 15:01:42 2017 Benjamin
-** Last update Sun Jun 11 18:37:02 2017 Jean-Adrien Domage
+** Last update Sun Jun 11 21:34:51 2017 Benjamin
 */
 
-#ifndef			CLIENT_H__
-# define		CLIENT_H__
+#ifndef			CLIENT_H_
+# define		CLIENT_H_
 
 # include		<netdb.h>
 # include		<arpa/inet.h>
@@ -18,19 +18,16 @@
 
 # define		R_FAILURE	(-1)
 # define		R_SUCCESS	(0)
-# define		IS_TRUE		(42)
+# define		IS_TRUE		(1)
 
-# define		ERR_CLOSE	"close()"
-# define		ERR_MALLOC	"malloc()"
-# define		ERR_SOCKET	"socket()"
-# define		ERR_PROTOCOL	"getprotobyname()"
-# define		ERR_RECV	"read()"
-# define		ERR_SEND	"write()"
-# define		ERR_SELECT	"select()"
-
-# define		GOODBYE		"Good bye!"
-# define		NOT_IMPLEMENTED	"This command has not been \
-implemented yet."
+# define		ERR_CLOSE	"error with close()"
+# define		ERR_MALLOC	"error with malloc()"
+# define		ERR_SOCKET	"error with socket()"
+# define		ERR_PROTOCOL	"error with getprotobyname()"
+# define		ERR_RECV	"error with read()"
+# define		ERR_SEND	"error with write()"
+# define		ERR_SELECT	"error with select()"
+# define		ERR_CONNECT	"error with connect()"
 
 # define		PROTOCOL	"TCP"
 # define		NB_CLIENT_CMDS	(10)
@@ -38,8 +35,6 @@ implemented yet."
 # define		BUFFER_SIZE	(1024)
 # define		PROMPT		"[my_irc]$ "
 # define		EOL		'\n'
-
-# define		ERR_CONNECT	"connect()"
 
 # define		DISCO_MSG	"DISCONNECT"
 # define		KICKED_MSG	"Connection with server has been \
@@ -52,6 +47,7 @@ typedef struct		s_sock_info
   struct protoent	*pe;
   struct sockaddr_in	s_in;
   int			sock;
+  int			port;
 }			t_sock_info;
 
 typedef struct		s_commands
@@ -62,6 +58,7 @@ typedef struct		s_commands
 
 typedef struct		s_client
 {
+  int			port;
   t_sock_info		sock_info;
   char			*name;
   fd_set		wfds;
@@ -91,4 +88,4 @@ int			users(t_client *client, char **tab, const char *name);
 int			message(t_client *client, char **tab, const char *name);
 void			free_tab(char **tab);
 
-#endif			/* !CLIENT_H__ */
+#endif			/* !CLIENT_H_ */
