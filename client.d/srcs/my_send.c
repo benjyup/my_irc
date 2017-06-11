@@ -5,7 +5,7 @@
 ** Login   <benjamin.peixoto@epitech.eu>
 ** 
 ** Started on  Mon Jun  5 13:38:49 2017 Benjamin
-** Last update Sun Jun 11 18:57:47 2017 Benjamin
+** Last update Sun Jun 11 21:17:14 2017 Benjamin
 */
 
 #include		<string.h>
@@ -23,6 +23,16 @@ static t_commands	g_cmd[NB_CLIENT_CMDS] =
       {"/msg", &message},
       {"/help", &usage}
     };
+
+int			tablen(char **tab)
+{
+  int			i;
+
+  i = 0;
+  while (tab[i])
+    ++i;
+  return (i);
+}
 
 static int		is_cmd(const char *cmd)
 {
